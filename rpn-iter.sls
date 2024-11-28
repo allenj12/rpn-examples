@@ -71,34 +71,52 @@
                         (5 5 rot) (6 6 rot) fold4)
             (9 4 rif))
 
-(: find1 (3 1 (lambda (arg fn l)
+(: find1 (3 1 (lambda (arg fn li)
                   (call/cc
                     (lambda (c)
-                      (if (null? l)
-                          arg
-                          (let ([ret (fn c arg (car l))])
-                            (find1 ret fn (cdr l)))))))))
+                      (let loo ([a arg]
+                                [f fn]
+                                [l li])
+                        (if (null? l)
+                            (c a)
+                            (let ([ret (f c a (car l))])
+                              (loo ret f (cdr l))))))))))
   
-(:v find2 (4 2 (lambda (arg1 arg2 fn l)
+(:v find2 (4 2 (lambda (arg1 arg2 fn li)
                   (call/cc
                     (lambda (c)
-                      (if (null? l)
-                          (values arg1 arg2)
-                          (let-values ([(a b) (fn c arg1 arg2 (car l))])
-                            (find2 a b fn (cdr l)))))))))
+                      (let loo ([a1 arg1]
+                                [a2 arg2]
+                                [f fn]
+                                [l li])
+                        (if (null? l)
+                            (c a1 a2)
+                            (let-values ([(na1 na2) (f c a1 a2 (car l))])
+                              (loo na1 na2 f (cdr l))))))))))
                             
-(:v find3 (5 3 (lambda (arg1 arg2 arg3 fn l)
+(:v find3 (5 3 (lambda (arg1 arg2 arg3 fn li)
                   (call/cc
                     (lambda (c)
-                      (if (null? l)
-                          (values arg1 arg2 arg3)
-                          (let-values ([(a b d) (fn c arg1 arg2 arg3 (car l))])
-                            (find3 a b d fn (cdr l)))))))))
+                      (let loo ([a1 arg1]
+                                [a2 arg2]
+                                [a3 arg3]
+                                [f fn]
+                                [l li])
+                        (if (null? l)
+                            (c a1 a2 a3)
+                            (let-values ([(na1 na2 na3) (f c a1 a2 a3 (car l))])
+                              (loo na1 na2 na3 f (cdr l))))))))))
                             
-(:v find4 (6 4 (lambda (arg1 arg2 arg3 arg4 fn l)
+(:v find4 (6 4 (lambda (arg1 arg2 arg3 arg4 fn li)
                   (call/cc
                     (lambda (c)
-                      (if (null? l)
-                          (values arg1 arg2 arg3 arg4)
-                          (let-values ([(a b d e) (fn c arg1 arg2 arg3 arg4 (car l))])
-                            (find4 a b d e fn (cdr l))))))))))
+                      (let loo ([a1 arg1]
+                                [a2 arg2]
+                                [a3 arg3]
+                                [a4 arg4]
+                                [f fn]
+                                [l li])
+                        (if (null? l)
+                            (c a1 a2)
+                            (let-values ([(na1 na2 na3 na4) (f c a1 a2 a3 a4 (car l))])
+                              (loo na1 na2 na3 na4 f (cdr l)))))))))))
