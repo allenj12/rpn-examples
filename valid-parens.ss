@@ -9,10 +9,6 @@
            (4 4 rot) (2 or) skim)
 (: not-null? (1 null?) (1 not))
 
-(:v 2pand
-    (rpnlv (2 -- 1) #f skim)
-    (5 rif))
-
 (: balanced? (1 string->list) '() 
     (rpnlv dup open?
         (rpnlv (3 -- 1) swap (2 cons) skim)
