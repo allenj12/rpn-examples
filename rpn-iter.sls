@@ -117,6 +117,6 @@
                                 [f fn]
                                 [l li])
                         (if (null? l)
-                            (c a1 a2)
+                            (c a1 a2 a3 a4)
                             (let-values ([(na1 na2 na3 na4) (f c a1 a2 a3 a4 (car l))])
                               (loo na1 na2 na3 na4 f (cdr l)))))))))))
