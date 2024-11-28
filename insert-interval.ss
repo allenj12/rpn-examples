@@ -11,7 +11,7 @@
 (:v between tuck (2 <=) rrot (2 >=) (2 and))
 (:v prep-compare 2dup extract rot (1 car))
 (:v extract-prior over (1 car) extract)
-(:v dup3 rot dup (4 4 rrot))
+(:v dup3 rot dup 4rrot)
 (:v overlap? prep-compare start between rrot 
              prep-compare end between 4rot (2 or) rrot
              extract-prior dup3 start between 4rot (2 or) rrot
