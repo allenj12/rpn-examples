@@ -3,10 +3,7 @@
         (rpn-iter)
         (chezscheme))
 
-(:v 2dup over over)
-(:v split dup (1 cdr) swap (1 car))
 (:v open? #\{ (2 eqv?) over #\[ (2 eqv?) (2 or))
-(:v pop-stack split rot swap)
 (: match? over #\} (2 eqv?) over #\{ (2 eqv?) (2 and) rrot
           over #\] (2 eqv?) over #\[ (2 eqv?) (2 and) 
            (4 4 rot) (2 or) skim)
