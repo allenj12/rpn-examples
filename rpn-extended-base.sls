@@ -5,6 +5,9 @@
           2dup
           3dup
           4dup
+          dup2
+          dup3
+          dup4
           4rot
           5rot
           6rot
@@ -19,9 +22,9 @@
           9rrot
           nip
           2nip
-          nip2
           nip3
           nip4
+          nip5
           trim
           1rif
           2rif
@@ -61,11 +64,15 @@
 (:v 8rrot (8 8 rrot))
 (:v 9rrot (9 9 rrot))
 
+(:v dup2 over swap)
+(:v dup3 rot dup 4rrot 4rrot)
+(:v dup4 4rot dup 5rrot 5rrot)
+
 (: nip swap drop)
 (:v 2nip rot drop rot drop)
-(:v nip2 rot drop)
-(:v nip3 (4 4 rot) drop)
-(:v nip4 (5 5 rot) drop)
+(:v nip3 rot drop)
+(:v nip4 (4 4 rot) drop)
+(:v nip5 (5 5 rot) drop)
 
 (: trim drop swap drop)
 
@@ -93,21 +100,21 @@
     4rif)
 
 (:v 1por swap dup
-    (rpnl (2 -- 1) skim) curry
+    (rpnl (2 -- 1) swap skim) curry
     rot
     1rif)
 
 (:v 2por swap dup
-    (rpnl (3 -- 1) skim) curry
+    (rpnl (3 -- 1) rot skim) curry
     rot
     2rif)
     
 (:v 3por swap dup
-    (rpnl (4 -- 1) skim) curry
+    (rpnl (4 -- 1) 4rot skim) curry
     rot
     3rif)
 
 (:v 4por swap dup
-    (rpnl (5 -- 1) skim) curry
+    (rpnl (5 -- 1) 5rot skim) curry
     rot
     4rif))
