@@ -1,6 +1,10 @@
 #!chezscheme
 (library (rpn-iter)
-    (export iter1
+    (export repeat1
+            repeat2
+            repeat3
+            repeat4
+            iter1
             iter2
             iter3
             iter4
@@ -15,6 +19,28 @@
     (import (rpn)
             (rpn-extended-base)
             (chezscheme))
+
+(: repeat1 dup 0 {2 <=}
+                (rot skim)
+                (1 {2 fx-} (({2 ev}) 2k1) 2u2 repeat1)
+                3rif)
+
+(: repeat2 dup 0 {2 <=}
+                ({4 2} drop drop)
+                (1 {2 fx-} (({3 2 ev}) 3k2) 3u3 repeat2)
+                {7 2 rif})
+
+(: repeat3 dup 0 {2 <=}
+                ({5 3} drop drop)
+                (1 {2 fx-} (({4 3 ev}) 4k3) 4u4 repeat3)
+                {8 3 rif})
+
+(: repeat4
+  {6 4 (lambda (a1 a2 a3 a4 l c)
+        (if (<= c 0)
+          (values a1 a2 a3 a4)
+          (let-values ([(o t th f) (l a1 a2 a3 a4)])
+            (repeat4 o t th f l (fx- c 1)))))})
 
 (: iter1 1 (2dup {2 <}
                 ({5 1} drop drop drop swap drop)
