@@ -1,18 +1,18 @@
 #!chezscheme
-
 (import (chezscheme)
-        (rpn))
+        (rpn)
+        (rpn-extended-base))
 
-(: left  (1 car))
-(: right (1 caddr))
-(:v children dup right swap left swap)
+(: left  {1 car})
+(: right {1 caddr})
+(: children (left) 1k1 right)
 
-(: depth dup (1 null?)
-    (rpnl drop 0)
-    (rpnl children depth 1 + swap depth 1 + (2 max))
-    (4 rif))
+(: depth dup {1 null?}
+    (drop 0)
+    (children depth 1 + swap depth 1 + {2 max})
+    1rif)
 
 (: tree '((() 9 ()) 3 ((() 15 ()) 20 (() 7 ()))))
 
 (scheme-start
- (rpnlv tree depth dis))
+ (rpnv tree depth dis))
