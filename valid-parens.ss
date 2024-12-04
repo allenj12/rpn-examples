@@ -4,21 +4,20 @@
         (rpn-extended-base)
         (chezscheme))
 
-(:v open? #\{ (2 eqv?) over #\[ (2 eqv?) (2 or))
-(: match? over #\} (2 eqv?) over #\{ (2 eqv?) (2 and) rrot
-          over #\] (2 eqv?) over #\[ (2 eqv?) (2 and) 
-          4rot (2 or) skim)
-(: not-null? (1 null?) (1 not))
+(: open? (#\{ {2 eqv?}) 1k1 #\[ {2 eqv?} {2 or})
+(: match? 2dup #\{ {2 eqv?} (#\} {2 eqv?}) 1u1 {2 and}
+              (#\[ {2 eqv?} (#\] {2 eqv?}) 1u1 {2 and}) 2u1 {2 or})
+(: not-null? {1 null?} {1 not})
 
-(: balanced? (1 string->list) '() 
-    (rpnlv dup open?
-        (rpnlv (3 -- 1) swap (2 cons) skim)
-        (rpnlv (3 -- 1) over dup not-null? (rpnl (1 car) match?) 2pand
-            (rpnl (2 -- 1) (1 cdr) skim)
-            (rpnl (2 -- 1) drop #f swap (2 ev))
+(: balanced? {1 string->list} '() 
+    (dup open?
+        ({3 1} swap {2 cons} skim)
+        (over dup not-null? ({1 car} match?) 2pand
+            ({2 1} {1 cdr} skim)
+            (drop #f swap {2 ev})
             2rif)
         3rif)
-    rot find1 (1 null?))
+    rot find1 {1 null?})
 
 (scheme-start
  (rpnlv "{{{{}}}{{}}}" balanced? dis))
