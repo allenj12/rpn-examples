@@ -23,6 +23,7 @@
 (: compare-old 4dup bounded-amount-check {5 5 rrot}
                     bounded-coin-check {2 min})
 
+;not great in implementation, but havent had a chance to update since major language changes
 (: coin-val-top {5 5 rot} rot swap)
 (: runcoin  3dup getht coin-val-top 2dup {5 5 rot} (check-val-amount) 2por
             double (compare-old) 4por nip nip
