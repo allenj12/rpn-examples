@@ -15,4 +15,4 @@
 (: tree '((() 9 ()) 3 ((() 15 ()) 20 (() 7 ()))))
 
 (scheme-start
- (rpnv tree depth dis))
+ (rpnlv tree depth dis))
