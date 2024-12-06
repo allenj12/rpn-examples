@@ -14,4 +14,4 @@
             {5 2 rif})
 
 (scheme-start
-        (rpnlv new-q 1 oq empt? 2 oq 3 oq 4 oq uq dis 5 oq uq dis uq dis uq dis uq dis))
+        (rpnlv new-q 1 oq 2 oq 3 oq 4 oq uq dis 5 oq uq dis uq dis uq dis uq dis))
