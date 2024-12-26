@@ -1,8 +1,8 @@
 #!chezscheme
 (import (chezscheme)
-        (rpn-extended-base)
-        (rpn-iter)
-        (rpn))
+        (rpn extended-base)
+        (rpn iter)
+        (rpn rpn))
 
 (: putht dup3 {3 put-hash-table!} SE) ;maintain just hashmap
 (: getht 0 {3 get-hash-table})
