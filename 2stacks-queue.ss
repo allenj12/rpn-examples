@@ -1,8 +1,8 @@
 #!chezscheme
 (import (chezscheme)
-        (rpn)
-        (rpn-extended-base)
-        (rpn-iter))
+        (rpn rpn)
+        (rpn extended-base)
+        (rpn iter))
 
 (: l {1 car})
 (: r {1 cadr})
