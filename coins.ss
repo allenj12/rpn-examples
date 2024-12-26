@@ -1,8 +1,8 @@
 #!chezscheme
 (import (chezscheme)
-        (rpn)
-        (rpn-extended-base)
-        (rpn-iter))
+        (rpn rpn)
+        (rpn extended-base)
+        (rpn iter))
 
 (: hash over 100 * over + skim)
 (: putht rrot hash swap {3 put-hash-table!} SE)
