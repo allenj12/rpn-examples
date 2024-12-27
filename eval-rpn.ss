@@ -1,8 +1,8 @@
 #!chezscheme
 (import (chezscheme)
-        (rpn)
-        (rpn-extended-base)
-        (rpn-iter))
+        (rpn rpn)
+        (rpn extended-base)
+        (rpn iter))
 
 (: proc-or-match swap dup {1 procedure?}
     ({2 1} #f skim)
@@ -25,4 +25,4 @@
                rot fold1 {1 car})
 
 (scheme-start
- (rpnlv '("1" "2" "*" "20" "-") runrpn))
+ (rpnlv '("1" "2" "*" "20" "-") runrpn dis))
