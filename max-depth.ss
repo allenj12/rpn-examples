@@ -1,7 +1,7 @@
 #!chezscheme
 (import (chezscheme)
-        (rpn)
-        (rpn-extended-base))
+        (rpn rpn)
+        (rpn extended-base))
 
 (: left  {1 car})
 (: right {1 caddr})
