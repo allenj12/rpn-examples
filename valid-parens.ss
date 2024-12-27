@@ -1,7 +1,7 @@
 #!chezscheme
-(import (rpn)
-        (rpn-iter)
-        (rpn-extended-base)
+(import (rpn rpn)
+        (rpn iter)
+        (rpn extended-base)
         (chezscheme))
 
 (: open? (#\{ {2 eqv?}) 1k1 #\[ {2 eqv?} {2 or})
